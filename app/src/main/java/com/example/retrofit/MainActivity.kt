@@ -16,20 +16,11 @@ class MainActivity : AppCompatActivity() {
 
         val tv = findViewById<TextView>(R.id.tv)
 
-
         val retrofit = Retrofit.Builder()
             .baseUrl("https://restcountries.com/v2/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val country = retrofit.create(JsonAPI::class.java)
-        /*CoroutineScope(Dispatchers.IO).launch{
-            val list = country.getPosts()
-            runOnUiThread{
-                for (item in list){
-                    tv.append(item.name + " " + item.population + "\n")
-                }
-            }
-        }*/
 
         val call : Call<List<DataModel>> = country.getPosts()
         call.enqueue(object : Callback<List<DataModel>>{
@@ -56,7 +47,6 @@ class MainActivity : AppCompatActivity() {
             override fun onFailure(call: Call<List<DataModel>>, t: Throwable) {
                 tv.text = t.message
             }
-
         })
     }
 }
