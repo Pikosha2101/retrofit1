@@ -3,9 +3,6 @@ package com.example.retrofit
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                 val posts : List<DataModel>? = response.body()
                 if (posts != null) {
                     for (api : DataModel in posts){
-                        var content : String = "Страна: "
+                        var content = "Страна: "
                         content += api.name + " "
                         content += " Население: "
                         content += api.population + "\n"
