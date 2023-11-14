@@ -20,9 +20,9 @@ class MainActivity : AppCompatActivity() {
             .baseUrl("https://restcountries.com/v2/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        val country = retrofit.create(JsonAPI::class.java)
+        val countryAPI = retrofit.create(JsonAPI::class.java)
 
-        val call : Call<List<DataModel>> = country.getPosts()
+        val call : Call<List<DataModel>> = countryAPI.getPosts()
         call.enqueue(object : Callback<List<DataModel>>{
             override fun onResponse(
                 call: Call<List<DataModel>>,
